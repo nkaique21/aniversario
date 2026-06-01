@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="theme-color" content="#0a0608" />
+  <title>Feliz aniversário</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <canvas id="particles-canvas"></canvas>
+
+  <svg class="svg-defs" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+        <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="soft-glow">
+        <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+        <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+  </svg>
+  <div id="intro-screen">
+    <div class="fog fog-1"></div>
+    <div class="fog fog-2"></div>
+    <div class="fog fog-3"></div>
+    <div class="intro-ornament top">
+      <svg viewBox="0 0 300 40" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="20" x2="120" y2="20" stroke="#7a2d3a" stroke-width="0.5" opacity="0.6"/>
+        <circle cx="140" cy="20" r="3" fill="none" stroke="#7a2d3a" stroke-width="0.5" opacity="0.8"/>
+        <circle cx="150" cy="20" r="6" fill="none" stroke="#7a2d3a" stroke-width="0.5" opacity="0.6"/>
+        <circle cx="160" cy="20" r="3" fill="none" stroke="#7a2d3a" stroke-width="0.5" opacity="0.8"/>
+        <line x1="180" y1="20" x2="300" y2="20" stroke="#7a2d3a" stroke-width="0.5" opacity="0.6"/>
+      </svg>
+    </div>
+
+    <div class="intro-content">
+      <div class="rabbit-symbol">
+        <svg viewBox="0 0 80 100" xmlns="http://www.w3.org/2000/svg" class="rabbit-svg">
+          <path d="M25 45 Q20 20 22 5 Q24 15 30 40" stroke="#c8a0a8" stroke-width="1" fill="none" opacity="0.7"/>
+          <path d="M55 45 Q60 20 58 5 Q56 15 50 40" stroke="#c8a0a8" stroke-width="1" fill="none" opacity="0.7"/>
+          <ellipse cx="40" cy="58" rx="18" ry="16" stroke="#c8a0a8" stroke-width="0.8" fill="none" opacity="0.5"/>
+          <circle cx="34" cy="55" r="1.5" fill="#7a2d3a" opacity="0.8"/>
+          <circle cx="46" cy="55" r="1.5" fill="#7a2d3a" opacity="0.8"/>
+          <ellipse cx="40" cy="61" rx="2" ry="1.2" fill="#c8a0a8" opacity="0.6"/>
+          <path d="M28 72 Q40 80 52 72" stroke="#c8a0a8" stroke-width="0.6" fill="none" opacity="0.3"/>
+        </svg>
+      </div>
+
+      <p class="intro-sub">— Sei que estou bem atrasado mas —</p>
+
+      <h1 class="intro-title">
+        <span class="title-line-1">não poderia deixar passar em branco</span>
+        <span class="title-line-2">mesmo sendo simples, é o que eu consigo fazer.</span>
+      </h1>
+
+      <p class="intro-date">Você é uma pessoa muito importante</p>
+
+      <button id="enter-btn" class="enter-button" aria-label="Entrar na experiência">
+        <span class="btn-text">Abrir</span>
+        <span class="btn-border"></span>
+      </button>
+    </div>
+    <div class="intro-ornament bottom">
+      <svg viewBox="0 0 200 30" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100 5 L105 15 L100 25 L95 15 Z" stroke="#7a2d3a" stroke-width="0.5" fill="none" opacity="0.5"/>
+        <line x1="0" y1="15" x2="88" y2="15" stroke="#7a2d3a" stroke-width="0.5" opacity="0.3"/>
+        <line x1="112" y1="15" x2="200" y2="15" stroke="#7a2d3a" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+    </div>
+
+  </div>
+  <div id="main-screen" class="hidden">
+    <div class="fog fog-1 dark"></div>
+    <div class="fog fog-2 dark"></div>
+    <div class="floating-elements" aria-hidden="true">
+      <img src="colagens/first.png" class="float-elem" style="
+          width: 120px;
+          top: 0%;
+          left: 15%;
+          border-radius: 4px;
+          opacity: 0.5;
+          mix-blend-mode: luminosity;
+          " alt="">
+      <img src="colagens/1.png" class="float-elem" style="
+          width: 80px;
+          top: 0%;
+          right: 15%;
+          border-radius: 4px;
+          opacity: 0.5;
+          mix-blend-mode: luminosity;
+          " alt="">
+      <img src="colagens/2.png" class="float-elem" style="
+          width: 80px;
+          top: 15%;
+          left: 15%;
+          border-radius: 4px;
+          opacity: 0.5;
+          mix-blend-mode: luminosity;
+          " alt="">
+      <img src="colagens/3.webp" class="float-elem" style="
+          width: 80px;
+          top: 5%;
+          right: 15%;
+          border-radius: 4px;
+          opacity: 0.5;
+          mix-blend-mode: luminosity;
+          " alt="">
+
+      <img src="colagens/4.png" class="float-elem" style="
+          width: 80px;
+          top: 30%;
+          left: 15%;
+          border-radius: 4px;
+          opacity: 0.5;
+          mix-blend-mode: luminosity;
+          " alt="">
+      <img src="colagens/5.png" class="float-elem" style="
+          width: 80px;
+          top: 30%;
+          right: 15%;
+          border-radius: 4px;
+          opacity: 0.5;
+          mix-blend-mode: luminosity;
+          " alt="">
+
+      <img src="colagens/6.png" class="float-elem" style="
+          width: 80px;
+          top: 45%;
+          left: 15%;
+          border-radius: 4px;
+          opacity: 0.5;
+          mix-blend-mode: luminosity;
+          " alt="">
+      <img src="colagens/7.webp" class="float-elem" style="
+          width: 120px;
+          top: 40%;
+          right: 15%;
+          border-radius: 4px;
+          opacity: 0.5;
+          mix-blend-mode: luminosity;
+          " alt="">
+      <img src="colagens/8.png" class="float-elem" style="
+          width: 120px;
+          top: 60%;
+          left: 15%;
+          border-radius: 4px;
+          opacity: 0.5;
+          mix-blend-mode: luminosity;
+          " alt="">
+      <img src="colagens/9.webp" class="float-elem" style="
+          width: 80px;
+          top: 60%;
+          right: 15%;
+          border-radius: 4px;
+          opacity: 0.5;
+          mix-blend-mode: luminosity;
+          " alt="">
+      <div class="float-elem note-1">♪</div>
+      <div class="float-elem note-2">♫</div>
+      <div class="float-elem note-3">♩</div>
+      <div class="float-elem star-1">✦</div>
+      <div class="float-elem star-2">✧</div>
+      <div class="float-elem star-3">✦</div>
+      <div class="float-elem heart-1">♥</div>
+      <div class="float-elem rabbit-float">
+        <svg viewBox="0 0 40 50" xmlns="http://www.w3.org/2000/svg" width="30" height="38">
+          <path d="M14 22 Q12 10 13 2 Q15 8 17 20" stroke="#c8a0a8" stroke-width="0.8" fill="none" opacity="0.4"/>
+          <path d="M26 22 Q28 10 27 2 Q25 8 23 20" stroke="#c8a0a8" stroke-width="0.8" fill="none" opacity="0.4"/>
+          <ellipse cx="20" cy="30" rx="9" ry="8" stroke="#c8a0a8" stroke-width="0.6" fill="none" opacity="0.3"/>
+          <circle cx="17" cy="28" r="1" fill="#7a2d3a" opacity="0.5"/>
+          <circle cx="23" cy="28" r="1" fill="#7a2d3a" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="float-elem cross-1">✝</div>
+      <div class="float-elem moon-1">☽</div>
+      <div class="float-elem flower-1">✿</div>
+    </div>
+    <div id="music-control" class="music-btn-wrap">
+      <button id="music-btn" class="music-btn" aria-label="Tocar ou pausar música">
+        <span class="music-icon" id="music-icon">▶</span>
+        <span class="music-label">música</span>
+      </button>
+      <audio id="bg-music" loop preload="none">
+        <source src="Ma Chérie.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+    <div id="scroll-container">
+      <section class="poem-section section-opening" data-reveal>
+        <div class="section-inner">
+          <div class="decorative-line"></div>
+          <p class="poem-prelude reveal-text">Espero que você esteja bem e feliz</p>
+          <p class="poem-prelude reveal-text" style="animation-delay: 0.4s">você é uma das pessoas mais queridas que eu conheci na vida</p>
+          <p class="poem-prelude reveal-text italic" style="animation-delay: 0.8s">peço desculpas pelos meus exageros e faltas, mas tento ser o mais verdadeiro que consigo</p>
+          <div class="decorative-line right"></div>
+        </div>
+      </section>
+      <div class="ornament-divider" data-reveal>
+        <svg viewBox="0 0 400 50" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="25" x2="160" y2="25" stroke="#7a2d3a" stroke-width="0.5" opacity="0.5"/>
+          <path d="M170 15 Q185 25 170 35 Q185 25 200 15 Q185 25 200 35 Q185 25 170 15" stroke="#7a2d3a" stroke-width="0.5" fill="none" opacity="0.6"/>
+          <circle cx="200" cy="25" r="4" fill="none" stroke="#c8a0a8" stroke-width="0.5" opacity="0.5"/>
+          <path d="M230 15 Q215 25 230 35 Q215 25 200 15 Q215 25 200 35 Q215 25 230 15" stroke="#7a2d3a" stroke-width="0.5" fill="none" opacity="0.6"/>
+          <line x1="240" y1="25" x2="400" y2="25" stroke="#7a2d3a" stroke-width="0.5" opacity="0.5"/>
+        </svg>
+      </div>
+      <section class="poem-section section-letter" data-reveal>
+        <div class="section-inner">
+          <h2 class="section-heading reveal-text">FELIZ ANIVERSÁRIO</h2>
+          <h2 class="section-name reveal-text" style="animation-delay:0.3s">Kim Sun Jung</h2>
+
+          <div class="letter-body">
+            <p class="poem-line reveal-text" style="animation-delay:0.2s">
+                To tentando te falar o quanto me importo
+                Mas nao sei por onde começar
+                Falei tanto em Yugen mas nao sei o que inovar
+                Mesmo nao parece pelo jeito que me comporto
+            </p>
+            <p class="poem-line reveal-text" style="animation-delay:0.6s">
+                Você é a pessoa que mais me permitiu ser eu
+                So que em partes que eu ainda não sei explicar
+                Mesmo eu sendo passageiro, sinto que posso voar
+                Me sinto a vontade em um lugar que não é meu
+            </p>
+            <p class="poem-line reveal-text" style="animation-delay:0.8s">
+              Ama coelhos, unica relação com futebol é o Scorbunny
+              Sabe costurar, professora de linguas e ama literatura
+              Gotica, gosta de vkei, Tpop e Kpop
+              Escreve coisas que eu nunca li
+              E ainda desenha incrivelmente bem, penso: que loucura
+            </p>
+            <p class="poem-line reveal-text" style="animation-delay:0.10s">
+              Voce faz de tudo, e faz de tudo muito bem
+              Queria consegui te acompanhar mesmo quando quero sumir
+              Queria ser um dos motivos que podem te fazer sorrir
+              Mas se voce esta feliz, pra mim ta tudo bem
+            </p>
+            <p class="poem-line reveal-text" style="animation-delay:0.12s">
+              Voce me apresentou Boy Meets Maria
+              Given, Dungeon Meshi, Violet Evergarden
+              Retalhos da minha pessoa que a maiora não sabem
+              O quao facil com isso eu me identificaria
+            </p>
+            <p class="poem-line reveal-text" style="animation-delay:0.14s">
+              Mais uma vez eu não sei como terminar
+              E acho que nem sei como começei
+              Se nem um titulo eu consigo colocar
+              Mas isso voce ja sabia
+            </p>
+            <p class="poem-line reveal-text" style="animation-delay:0.16s">
+              Eu me importo muito mais do que eu demonstraria
+              Porque nao faço nada diferente do que ja sei
+              Ou nao posso falar nada diferente do que ja falei
+              Acho que a melhor parte foi mais que uma fatia
+            </p>
+            <p class="poem-line reveal-text" style="animation-delay:0.18s">
+              Me enrolei tanto que perdi a data
+              De te desejar um feliz aniversário do meu jeito
+              Nao que eu ache que fez alguma falta
+              Mas queria fazer algo direito  
+            </p>
+            <p class="poem-line reveal-text italic" style="animation-delay:0.20s">
+              Eu queria ser a pessoa que te ve
+              A pessoa que presta atencão em você
+              Queria te presentear com algo tao você
+              Porem o maximo que eu consigo é escrever
+            </p>
+          </div>
+        </div>
+      </section>
+      <div class="scrapbook-quote" data-reveal>
+        <div class="quote-inner">
+          <span class="quote-mark">"</span>
+          <p class="quote-text">Obrigado por aparecer em um lugar tão estranho<br>
+          Obrigado por sempre estar aqui<br>
+          Obrigado por existir.
+<br><span class="quote-small">Obrigado</span></p>
+          <span class="quote-mark closing">"</span>
+        </div>
+      </div>
+
+      <!-- Divisor com coelho -->
+      <div class="rabbit-divider" data-reveal aria-hidden="true">
+        <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" width="80" height="53">
+          <path d="M45 38 Q40 18 42 4 Q44 14 48 36" stroke="#c8a0a8" stroke-width="1" fill="none" opacity="0.5"/>
+          <path d="M75 38 Q80 18 78 4 Q76 14 72 36" stroke="#c8a0a8" stroke-width="1" fill="none" opacity="0.5"/>
+          <ellipse cx="60" cy="52" rx="18" ry="15" stroke="#c8a0a8" stroke-width="0.8" fill="none" opacity="0.35"/>
+          <circle cx="53" cy="49" r="1.8" fill="#7a2d3a" opacity="0.6"/>
+          <circle cx="67" cy="49" r="1.8" fill="#7a2d3a" opacity="0.6"/>
+          <ellipse cx="60" cy="55" rx="2.5" ry="1.5" fill="#c8a0a8" opacity="0.4"/>
+          <path d="M46 67 Q60 75 74 67" stroke="#c8a0a8" stroke-width="0.6" fill="none" opacity="0.25"/>
+        </svg>
+        <div class="rabbit-line"></div>
+      </div>
+
+          <div class="final-ornament reveal-text" style="animation-delay:0.9s">
+            <svg viewBox="0 0 300 30" xmlns="http://www.w3.org/2000/svg">
+              <line x1="0" y1="15" x2="130" y2="15" stroke="#7a2d3a" stroke-width="0.5" opacity="0.4"/>
+              <path d="M140 8 L150 15 L140 22" stroke="#7a2d3a" stroke-width="0.5" fill="none" opacity="0.5"/>
+              <path d="M160 8 L150 15 L160 22" stroke="#7a2d3a" stroke-width="0.5" fill="none" opacity="0.5"/>
+              <line x1="170" y1="15" x2="300" y2="15" stroke="#7a2d3a" stroke-width="0.5" opacity="0.4"/>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- Espaço final -->
+      <div style="height: 80px;"></div>
+
+    </div>
+    <!-- /scroll-container -->
+
+  </div>
+  <!-- /main-screen -->
+
+  <script src="script.js"></script>
+</body>
+</html>
